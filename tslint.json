@@ -1,0 +1,83 @@
+{
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js",
+      "tsconfig.json",
+      ".gitlab-ci.yml",
+      "tslint.json"
+    ]
+  },
+  "rules": {
+    /**
+        Array<T> vs T[]
+          Prefer the first on the basis that it can be used in more scenarios vs T[] and T[] cannot be used as a constructor. 
+          Preferring Array<T> type defintions generates more uniform code thus lowering complexity. 
+      */
+    "array-type": [true, "generic"],
+    /**
+        Pascal Case naming for interfaces and classes: 
+          class Dog... vs class dog   OR   interface Dog vs interface dog
+          This helps us differentiate definitions of classes and interfaces apart from everything else
+          
+        *though not yet reinforceable with tslint type aliases SHOULD ALSO FOLLOW THIS RULE:
+          type Dog = ... vs type dog ...
+      */
+    "class-name": true,
+    /**
+        File names must use camel casing. 
+          Realistically Pascal Casing is not an issue but using different standards with either -'s or _'s causes more 
+          unnecessary confusion over how to name a file.
+      */
+    "file-name-casing": [true, "camel-case"],
+    /**
+        Do not prefix interface name with I 
+          Not always considered a best practice and interface, type alias, and class names should be identified by casing, 
+          not leaking implementation details into name.
+      */
+    "interface-name": [true, "never-prefix"],
+    /**
+        Do not prefer interfaces over type aliases
+          Type aliases can be preferable in functional programming approaches in 
+          how they can be defined as readonly and are closed to extension or implementation.
+  
+          For cases where OO is preferred by the developer or solution prefer 
+          interfaces as necessary as this rule merely allows you to choose what is best.
+      */
+    "interface-over-type-literal": false,
+    /**
+        Do not require 'public' members of classes to be explicitly referenced
+          Being explicit about default spec behavior creates more verbosity around something which should be understood and 
+          clutters code needlessly in this instance.
+      */
+    "member-access": [true, "no-public"],
+    /**
+        Cannot use magic numbers (aka numbers that are not assigned to a name) in the code with the default exception of -1, 0, 1
+          Using magic numbers obscures logic and can make following code very difficult. 
+          Reinfocing magic number definitions gives purpose and context to their usage.
+      */
+    "no-magic-numbers": true,
+    /**
+        Cannot use var keyword
+          var vs let and const is function scoped and not block scoped. 
+          Generally this is not problematic but it can lead to more overhead and more complex design patterns when abused which in most cases it is. 
+          Few things are expressible only at a function scoping level that cannot be better or more clearly expressed at a block level.
+      */
+    "no-var-keyword": true,
+    /**
+        Do not force any sorting of keys in objects
+          Object structures can take on many forms and oftentimes the most intuitive ordering is not something reinforceable by tslint.
+          A common example is where you want the primitively typed data such as ids, counts, etc towards the top of the definition while more complex at the bottom.
+      */
+    "object-literal-sort-keys": false,
+    /**
+        Force semi-colon usage consistent with prettier's formatting.
+          While JavaScript itself its optional with semi-colons, the spec is being developed out with a bias towards them thus they should be preferered.
+          Additionally prettier auto-inserts them in otherwise proper code so it takes no effort to insert them should you rather not want to.
+      */
+    "semicolon": [true, "always", "strict-bound-class-methods"],
+    "no-console": false
+  }
+}
