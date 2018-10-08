@@ -1,10 +1,10 @@
 {
   "name": "versioning-tool",
   "description": "CLI tool for updating npm package version and tagging git repos for release.",
-  "version": "2018.10.08-5",
+  "version": "2018.10.08-4",
   "author": "Ben Force",
   "versioning": {
-    "date-format": "yyyy.mm.d"
+    "date-format": "yyyy.m.d"
   },
   "bin": {
     "vt": "./bin/run"
