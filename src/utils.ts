@@ -51,17 +51,24 @@ export async function getCurrentDateVersion(date: string): Promise<number> {
   return 0;
 }
 
-export const getDateFormat = () => {
+export const getDateFormat = (format?: string) => {
   let result = "yyyy.mm.dd";
   if (fs.existsSync("package.json")) {
-    let content = JSON.parse(fs.readFileSync("package.json").toString("utf-8"));
+    const content = JSON.parse(
+      fs.readFileSync("package.json").toString("utf-8")
+    );
     const data = content.versioning as any;
     if (data && data["date-format"]) {
       result = data["date-format"] as string;
     }
   }
 
+  if (format) {
+    result = format;
+  }
+
   return result;
 };
 
-export const getCurrentDate = () => dateformat(new Date(), getDateFormat());
+export const getCurrentDate = (format?: string) =>
+  dateformat(new Date(), getDateFormat(format));

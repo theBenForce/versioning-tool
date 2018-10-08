@@ -18,6 +18,12 @@ export default class Update extends Command {
       description:
         "Run a git push and git push --tags after updating the version"
     }),
+    format: flags.string({
+      char: "f",
+      description: "Format that the date portion should be in",
+      required: false,
+      default: undefined
+    }),
     message: flags.string({
       char: "m",
       description: "The message you want attached to the git tag",
@@ -60,6 +66,7 @@ export default class Update extends Command {
 
   async run() {
     // @ts-ignore
+    // tslint:disable-next-line:no-shadowed-variable
     const { flags } = this.parse(Update);
 
     const date = getCurrentDate();
