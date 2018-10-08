@@ -1,7 +1,9 @@
+// @ts-ignore
 import { Command, flags } from "@oclif/command";
 
 import * as fs from "fs";
 
+// @ts-ignore
 import cli from "cli-ux";
 import { execute, getCurrentDate, getCurrentDateVersion } from "../utils";
 
@@ -57,7 +59,7 @@ export default class Update extends Command {
   }
 
   async run() {
-    // tslint:disable-next-line:no-shadowed-variable
+    // @ts-ignore
     const { flags } = this.parse(Update);
 
     const date = getCurrentDate();

@@ -54,10 +54,10 @@ export async function getCurrentDateVersion(date: string): Promise<number> {
 export const getDateFormat = () => {
   let result = "yyyy.mm.dd";
   if (fs.existsSync("package.json")) {
-    let content = fs.readFileSync("package.json").toString("utf-8");
-    const data = content["versioning"];
+    let content = JSON.parse(fs.readFileSync("package.json").toString("utf-8"));
+    const data = content.versioning as any;
     if (data && data["date-format"]) {
-      result = data["date-format"];
+      result = data["date-format"] as string;
     }
   }
 
