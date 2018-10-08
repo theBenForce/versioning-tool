@@ -69,7 +69,7 @@ export default class Update extends Command {
     // tslint:disable-next-line:no-shadowed-variable
     const { flags } = this.parse(Update);
 
-    const date = getCurrentDate();
+    const date = getCurrentDate(flags.format);
 
     cli.action.start("getting today's version");
     const nextVersion = await this.getNextVersion(date);
@@ -95,5 +95,7 @@ export default class Update extends Command {
     }
 
     cli.action.stop(`updated to ${date}-${nextVersion}`);
+
+    console.info("Done");
   }
 }
