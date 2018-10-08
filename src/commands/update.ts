@@ -81,11 +81,8 @@ export default class Update extends Command {
     await this.addGitTag(date, nextVersion, flags.message);
 
     if (flags.push) {
-      cli.action.start("pushing commits");
-      await execute("git push");
-
-      cli.action.start("pushing tags");
-      await execute("git push --tags");
+      cli.action.start("pushing commits and tags");
+      await execute("git push & git push --tags");
     }
 
     cli.action.stop(`updated to ${date}-${nextVersion}`);
