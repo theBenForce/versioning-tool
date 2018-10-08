@@ -1,5 +1,6 @@
 import { exec, ExecException } from "child_process";
 import sh = require("shelljs");
+import * as fs from "fs";
 
 import * as dateformat from "dateformat";
 
@@ -50,4 +51,17 @@ export async function getCurrentDateVersion(date: string): Promise<number> {
   return 0;
 }
 
-export const getCurrentDate = () => dateformat(new Date(), "yyyy.mm.dd");
+export const getDateFormat = () => {
+  let result = "yyyy.mm.dd";
+  if (fs.existsSync("package.json")) {
+    let content = fs.readFileSync("package.json").toString("utf-8");
+    const data = content["versioning"];
+    if (data && data["date-format"]) {
+      result = data["date-format"];
+    }
+  }
+
+  return result;
+};
+
+export const getCurrentDate = () => dateformat(new Date(), getDateFormat());

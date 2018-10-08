@@ -33,6 +33,16 @@ USAGE
 
 <!-- usagestop -->
 
+# Version Formatting
+
+You can specify the date format that will be used by adding the following section to your package.json file:
+
+```json
+"versioning": {
+  "date-format": "yyyy.mm.dd"
+}
+```
+
 # Commands
 
 <!-- commands -->
