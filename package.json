@@ -3,6 +3,9 @@
   "description": "CLI tool for updating npm package version and tagging git repos for release.",
   "version": "2018.10.08-4",
   "author": "Ben Force",
+  "versioning": {
+    "date-format": "yyyy.mm.d"
+  },
   "bin": {
     "vt": "./bin/run"
   },
