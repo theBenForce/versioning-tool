@@ -10,27 +10,26 @@ CLI tool for updating npm package version and tagging git repos for release.
 [![License](https://img.shields.io/npm/l/versioning-tool.svg)](https://github.com/theBenForce/versioning-tool/blob/master/package.json)
 
 <!-- toc -->
-
-- [Usage](#usage)
-- [Commands](#commands)
-  <!-- tocstop -->
+* [versioning-tool](#versioning-tool)
+* [Usage](#usage)
+* [Version Formatting](#version-formatting)
+* [Commands](#commands)
+<!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g versioning-tool
 $ vt COMMAND
 running command...
 $ vt (-v|--version|version)
-versioning-tool/2018.10.5-1 darwin-x64 node-v10.1.0
+versioning-tool/2018.10.8-9 darwin-x64 node-v10.1.0
 $ vt --help [COMMAND]
 USAGE
   $ vt COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Version Formatting
@@ -46,24 +45,23 @@ You can specify the date format that will be used by adding the following sectio
 # Commands
 
 <!-- commands -->
+* [`vt current`](#vt-current)
+* [`vt help [COMMAND]`](#vt-help-command)
+* [`vt update`](#vt-update)
 
-- [`vt current [FILE]`](#vt-current-file)
-- [`vt help [COMMAND]`](#vt-help-command)
-- [`vt update`](#vt-update)
-
-## `vt current [FILE]`
+## `vt current`
 
 Displays current version
 
 ```
 USAGE
-  $ vt current [FILE]
+  $ vt current
 
 OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/current.ts](https://github.com/theBenForce/versioning-tool/blob/v2018.10.5-1/src/commands/current.ts)_
+_See code: [src/commands/current.ts](https://github.com/theBenForce/versioning-tool/blob/v2018.10.8-9/src/commands/current.ts)_
 
 ## `vt help [COMMAND]`
 
@@ -91,11 +89,12 @@ USAGE
   $ vt update
 
 OPTIONS
+  -f, --format=format    Format that the date portion should be in
   -h, --help             show CLI help
   -m, --message=message  The message you want attached to the git tag
   -p, --push             Run a git push and git push --tags after updating the version
+  -v, --version=version  Force a new version number
 ```
 
-_See code: [src/commands/update.ts](https://github.com/theBenForce/versioning-tool/blob/v2018.10.5-1/src/commands/update.ts)_
-
+_See code: [src/commands/update.ts](https://github.com/theBenForce/versioning-tool/blob/v2018.10.8-9/src/commands/update.ts)_
 <!-- commandsstop -->

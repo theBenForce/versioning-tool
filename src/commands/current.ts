@@ -8,8 +8,6 @@ export default class Current extends Command {
     help: flags.help({ char: "h" })
   };
 
-  static args = [{ name: "file" }];
-
   async run() {
     const date = getCurrentDate();
     const currentVersion = await getCurrentDateVersion(date);
