@@ -24,6 +24,12 @@ export default class Update extends Command {
       required: false,
       default: undefined
     }),
+    version: flags.integer({
+      char: "v",
+      description: "Force a new version number",
+      required: false,
+      default: undefined
+    }),
     message: flags.string({
       char: "m",
       description: "The message you want attached to the git tag",
@@ -72,7 +78,13 @@ export default class Update extends Command {
     const date = getCurrentDate(flags.format);
 
     cli.action.start("getting today's version");
-    const nextVersion = await this.getNextVersion(date);
+    let nextVersion;
+
+    if (flags.version !== undefined) {
+      nextVersion = flags.version;
+    } else {
+      nextVersion = await this.getNextVersion(date);
+    }
 
     if (fs.existsSync("package.json")) {
       cli.action.start("updating package.json");
